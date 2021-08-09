@@ -65,7 +65,7 @@ namespace tiltbrush
             string heures = System.DateTime.UtcNow.ToLocalTime().ToString("HH");
             string minutes = System.DateTime.UtcNow.ToLocalTime().ToString("mm");
             string secondes = System.DateTime.UtcNow.ToLocalTime().ToString("ss");
-            //Jour = float.Parse(heures) * 3600 + float.Parse(minutes) * 60 + float.Parse(secondes);
+            Jour = float.Parse(heures) * 3600 + float.Parse(minutes) * 60 + float.Parse(secondes);
             Weather();
 
         }

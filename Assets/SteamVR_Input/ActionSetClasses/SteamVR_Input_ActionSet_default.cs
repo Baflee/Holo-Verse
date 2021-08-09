@@ -113,6 +113,22 @@ namespace Valve.VR
             }
         }
         
+        public virtual SteamVR_Action_Boolean PlayerScaleLeft
+        {
+            get
+            {
+                return SteamVR_Actions.default_PlayerScaleLeft;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean PlayerScaleRight
+        {
+            get
+            {
+                return SteamVR_Actions.default_PlayerScaleRight;
+            }
+        }
+        
         public virtual SteamVR_Action_Vibration Haptice
         {
             get
