@@ -63,6 +63,18 @@
       "type": "boolean"
     },
     {
+      "name": "/actions/default/in/Flying",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/PlayerScaleReset",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/PlayerScaleSlider",
+      "type": "vector2"
+    },
+    {
       "name": "/actions/default/out/Haptice",
       "type": "vibration"
     },
@@ -185,7 +197,10 @@
       "/actions/default/in/TouchPad": "TouchPad",
       "/actions/default/out/Haptice": "Haptic",
       "/actions/default/in/PlayerScaleLeft": "Player Scale (Left)",
-      "/actions/default/in/PlayerScaleRight": "Player Scale (Right)"
+      "/actions/default/in/PlayerScaleRight": "Player Scale (Right)",
+      "/actions/default/in/Flying": "Flying",
+      "/actions/default/in/PlayerScaleReset": "Player Scale (Reset)",
+      "/actions/default/in/PlayerScaleSlider": "Player Scale (Slider)"
     }
   ]
 }

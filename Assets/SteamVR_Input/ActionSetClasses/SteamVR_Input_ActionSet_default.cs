@@ -129,6 +129,30 @@ namespace Valve.VR
             }
         }
         
+        public virtual SteamVR_Action_Boolean Flying
+        {
+            get
+            {
+                return SteamVR_Actions.default_Flying;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean PlayerScaleReset
+        {
+            get
+            {
+                return SteamVR_Actions.default_PlayerScaleReset;
+            }
+        }
+        
+        public virtual SteamVR_Action_Vector2 PlayerScaleSlider
+        {
+            get
+            {
+                return SteamVR_Actions.default_PlayerScaleSlider;
+            }
+        }
+        
         public virtual SteamVR_Action_Vibration Haptice
         {
             get
