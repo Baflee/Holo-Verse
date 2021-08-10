@@ -33,15 +33,17 @@ public class PlayerFlyingHead : MonoBehaviour
 
         if (isFlying)
         {
+            /*
             if()
             {
 
             }
             else
             { 
+            */
                 Vector3 HeadDir = distance.position - head.position;
                 transform.position -= HeadDir * Speed;
-            }
+            //}
         }
     }
 }
