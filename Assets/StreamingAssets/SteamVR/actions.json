@@ -75,6 +75,10 @@
       "type": "vector2"
     },
     {
+      "name": "/actions/default/in/PlayerPositionReset",
+      "type": "boolean"
+    },
+    {
       "name": "/actions/default/out/Haptice",
       "type": "vibration"
     },
@@ -200,7 +204,8 @@
       "/actions/default/in/PlayerScaleRight": "Player Scale (Right)",
       "/actions/default/in/Flying": "Flying",
       "/actions/default/in/PlayerScaleReset": "Player Scale (Reset)",
-      "/actions/default/in/PlayerScaleSlider": "Player Scale (Slider)"
+      "/actions/default/in/PlayerScaleSlider": "Player Scale (Slider)",
+      "/actions/default/in/PlayerPositionReset": "Player Position Reset (left)"
     }
   ]
 }

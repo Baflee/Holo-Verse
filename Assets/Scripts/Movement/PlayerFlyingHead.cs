@@ -7,12 +7,8 @@ public class PlayerFlyingHead : MonoBehaviour
 {
     public Transform head;
     public Transform distance;
-    [Range(0.1f, 1f)]
-    [SerializeField] public float Speed = 0.5f;
-
-    //public SteamVR_TrackedObject leftHand;
-    //public SteamVR_TrackedObject rightHand;
     public SteamVR_Action_Boolean Flying;
+    public Vector2ScaleScript Vector2ScaleScript;
 
     private bool isFlying = false;
 
@@ -33,17 +29,8 @@ public class PlayerFlyingHead : MonoBehaviour
 
         if (isFlying)
         {
-            /*
-            if()
-            {
-
-            }
-            else
-            { 
-            */
-                Vector3 HeadDir = distance.position - head.position;
-                transform.position -= HeadDir * Speed;
-            //}
+             Vector3 HeadDir = distance.position - head.position;
+             transform.position -= HeadDir * Vector2ScaleScript.PlayerFlyingSpeed;
         }
     }
 }

@@ -153,6 +153,14 @@ namespace Valve.VR
             }
         }
         
+        public virtual SteamVR_Action_Boolean PlayerPositionReset
+        {
+            get
+            {
+                return SteamVR_Actions.default_PlayerPositionReset;
+            }
+        }
+        
         public virtual SteamVR_Action_Vibration Haptice
         {
             get

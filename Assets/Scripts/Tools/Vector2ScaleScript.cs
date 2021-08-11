@@ -6,46 +6,73 @@ using Valve.VR;
 public class Vector2ScaleScript : MonoBehaviour
 {
     public GameObject Player;
+    public PlayerController PlayerController;
+    public float MaxScale;
+    public float MinScale;
+    public float MaxPlayerWalkingSpeed;
+    public float MinPlayerWalkingSpeed;
+    public float MaxPlayerFlyingSpeed;
+    public float MinPlayerFlyingSpeed;
     [Range(0.5f, 6f)]
     [SerializeField] public float PlayerScale = 1.5f;
     [Range(1f, 12f)]
-    [SerializeField] public float PlayerSpeed = 4f;
+    [SerializeField] public float PlayerWalkingSpeed;
+    [Range(1f, 12f)]
+    [SerializeField] public float PlayerFlyingSpeed;
     public SteamVR_Action_Vector2 ScaleSlider;
     public SteamVR_Action_Boolean ScaleReset;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
     {
         Player.transform.localScale = new Vector3(PlayerScale, PlayerScale, PlayerScale);
-        PlayerSpeed = PlayerScale * 2f;
+        WalkingSpeed();
+        FlyingSpeed();
+        PlayerController.speed = PlayerWalkingSpeed;
 
-        if (ScaleSlider.axis.magnitude > 0.1f && PlayerScale <= 6.00f && PlayerScale >= 0f)
+        if (ScaleSlider.axis.magnitude > 0.1f && PlayerScale <= MaxScale && PlayerScale >= MinScale)
         {
             var fromAbs = ScaleSlider.axis.x - -1f;
             var fromMaxAbs = 1f - -1f;
 
             var normal = fromAbs / fromMaxAbs;
 
-            var toMaxAbs = 6f - 0.5f;
+            var toMaxAbs = MaxScale - MinScale;
             var toAbs = toMaxAbs * normal;
 
-            var to = toAbs + 0.5f;
-
-            PlayerScale = to;
+            PlayerScale = toAbs + MinScale;
         }
 
         if (ScaleReset.GetStateDown(SteamVR_Input_Sources.LeftHand))
         {
             PlayerScale = 1.5f;
         }
+    }
 
-        Debug.Log(ScaleSlider.axis.x);
+    void WalkingSpeed()
+    {
+        var fromAbs = PlayerScale - MinScale;
+        var fromMaxAbs = MaxScale - MinScale;
+
+        var normal = fromAbs / fromMaxAbs;
+
+        var toMaxAbs = MaxPlayerWalkingSpeed - MinPlayerWalkingSpeed;
+        var toAbs = toMaxAbs * normal;
+
+        PlayerWalkingSpeed = toAbs + MinPlayerWalkingSpeed;
+    }
+
+    void FlyingSpeed()
+    {
+        var fromAbs = PlayerScale - MinScale;
+        var fromMaxAbs = MaxScale - MinScale;
+
+        var normal = fromAbs / fromMaxAbs;
+
+        var toMaxAbs = MaxPlayerFlyingSpeed - MinPlayerFlyingSpeed;
+        var toAbs = toMaxAbs * normal;
+
+        PlayerFlyingSpeed = toAbs + MinPlayerFlyingSpeed;
     }
 
     /*
@@ -69,10 +96,4 @@ public class Vector2ScaleScript : MonoBehaviour
             PlayerScale = 0f;
     }
     */
-
-    void Regulatescale()
-    {
-
-    }
-
 }
