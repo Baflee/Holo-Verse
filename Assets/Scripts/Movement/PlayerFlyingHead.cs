@@ -10,7 +10,7 @@ public class PlayerFlyingHead : MonoBehaviour
     public SteamVR_Action_Boolean Flying;
     public Vector2ScaleScript Vector2ScaleScript;
 
-    private bool isFlying = false;
+    public bool isFlying = false;
 
     // Update is called once per frame
     void Update()

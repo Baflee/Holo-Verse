@@ -13,11 +13,13 @@ public class Vector2ScaleScript : MonoBehaviour
     public float MinPlayerWalkingSpeed;
     public float MaxPlayerFlyingSpeed;
     public float MinPlayerFlyingSpeed;
+    public bool ScaleDown;
+    public bool ScaleUp;
     [Range(0.5f, 6f)]
     [SerializeField] public float PlayerScale = 1.5f;
-    [Range(1f, 12f)]
+    [Range(4f, 12f)]
     [SerializeField] public float PlayerWalkingSpeed;
-    [Range(1f, 12f)]
+    [Range(0.15f, 0.01f)]
     [SerializeField] public float PlayerFlyingSpeed;
     public SteamVR_Action_Vector2 ScaleSlider;
     public SteamVR_Action_Boolean ScaleReset;
@@ -28,6 +30,7 @@ public class Vector2ScaleScript : MonoBehaviour
         Player.transform.localScale = new Vector3(PlayerScale, PlayerScale, PlayerScale);
         WalkingSpeed();
         FlyingSpeed();
+        VerifyScaleHUD();
         PlayerController.speed = PlayerWalkingSpeed;
 
         if (ScaleSlider.axis.magnitude > 0.1f && PlayerScale <= MaxScale && PlayerScale >= MinScale)
@@ -75,25 +78,22 @@ public class Vector2ScaleScript : MonoBehaviour
         PlayerFlyingSpeed = toAbs + MinPlayerFlyingSpeed;
     }
 
-    /*
-    void Upscale()
+    void VerifyScaleHUD()
     {
-        if (PlayerScale <= 6.00f)
+        if (ScaleSlider.axis.x < 0f)
         {
-            PlayerScale += 0.25f;
+            ScaleDown = true;
         }
         else
-            PlayerScale = 6f;
-    }
+            ScaleDown = false;
 
-    void Downscale()
-    {
-        if (PlayerScale >= 0f)
+        if (ScaleSlider.axis.x > 0f)
         {
-            PlayerScale -= 0.25f;
+            ScaleUp = true;
         }
         else
-            PlayerScale = 0f;
+            ScaleUp = false;
     }
-    */
 }
+
+

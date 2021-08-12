@@ -72,7 +72,7 @@ namespace Valve.VR.InteractionSystem
 		private Player player = null;
 		private TeleportArc teleportArc = null;
 
-		private bool visible = false;
+		public bool visible = false;
 
 		private TeleportMarkerBase[] teleportMarkers;
 		private TeleportMarkerBase pointedAtTeleportMarker;

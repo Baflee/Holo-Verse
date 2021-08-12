@@ -21,6 +21,7 @@ namespace Valve.VR.InteractionSystem
 		void Awake()
 		{
 			capsuleCollider = GetComponent<CapsuleCollider>();
+			Physics.IgnoreLayerCollision(6, 7);
 		}
 
 
