@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
+using UnityEngine.UI;
 
 public class ShowController : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class ShowController : MonoBehaviour
     public bool loaded = true;
     private GameObject iconslotright = null;
     private GameObject iconslotleft = null;
+    private GameObject controllerleft = null;
 
     [SerializeField]
     public Material interactmaterial;
@@ -39,14 +41,23 @@ public class ShowController : MonoBehaviour
     public Vector3 iconscalescale;
 
     [SerializeField]
+    public GameObject menu;
+    private GameObject clonemenu = null;
+    public Vector3 menuposition;
+    public Vector3 menuscale;
+
+    [SerializeField]
     public PlayerController PlayerController;
     public PlayerFlyingHead PlayerFlyingHead;
     public Teleport Teleport;
     public Vector2ScaleScript Vector2ScaleScript;
-    
+
     [SerializeField]
+    public Camera PointerCamera;
     public bool showController = false;
     public bool showIcons = false;
+    public float MinShowMenu;
+    public float MaxShowMenu;
 
     private void Start()
     {
@@ -54,6 +65,7 @@ public class ShowController : MonoBehaviour
         cloneiconteleportation = GameObject.Instantiate(iconteleportation);
         cloneiconmovement = GameObject.Instantiate(iconmovement);
         cloneiconfly = GameObject.Instantiate(iconfly);
+        clonemenu = GameObject.Instantiate(menu);
     }
 
     // Update is called once per frame
@@ -81,10 +93,15 @@ public class ShowController : MonoBehaviour
             cloneiconscale.transform.localRotation = Quaternion.Euler(90, 0, 0);
             cloneiconscale.transform.localScale = iconscalescale;
 
+            clonemenu.transform.parent = iconslotleft.transform;
+            clonemenu.transform.localPosition = menuposition;
+            clonemenu.transform.localRotation = Quaternion.Euler(-90, 180, 0);
+            clonemenu.transform.localScale = menuscale;
+            clonemenu.GetComponent<Canvas>().worldCamera = PointerCamera;
             loaded = false;
         }
-        
 
+        controllerleft = GameObject.Find("Player/SteamVRObjects/LeftHand");
         iconslotright = GameObject.Find("Player/SteamVRObjects/RightHand/RightRenderModel Slim(Clone)/controller(Clone)/trackpad");
         iconslotleft = GameObject.Find("Player/SteamVRObjects/LeftHand/LeftRenderModel Slim(Clone)/controller(Clone)/trackpad");
 
@@ -124,6 +141,15 @@ public class ShowController : MonoBehaviour
                 iconslotleft.GetComponent<Renderer>().material = defaultmaterial;
                 cloneiconscale.SetActive(false);
             }
+        }
+
+        if (iconslotleft && iconslotright && controllerleft.transform.eulerAngles.z >= MinShowMenu && controllerleft.transform.eulerAngles.z <= MaxShowMenu)
+        {
+            clonemenu.SetActive(true);
+        }
+        else
+        {
+            clonemenu.SetActive(false);
         }
 
         foreach (var hand in Player.instance.hands)
