@@ -14,6 +14,7 @@ namespace tiltbrush
         public Gradient PaletteJour;
         GradientColorKey[] PaletteJourCouleur;
         GradientAlphaKey[] PaletteJourTransparent;
+        public bool ActivateTimeZone;
         float H_Minuit = 86400f;
         float H_Soir = 64800f;
         float H_Midi = 43200f;
@@ -65,7 +66,12 @@ namespace tiltbrush
             string heures = System.DateTime.UtcNow.ToLocalTime().ToString("HH");
             string minutes = System.DateTime.UtcNow.ToLocalTime().ToString("mm");
             string secondes = System.DateTime.UtcNow.ToLocalTime().ToString("ss");
-            Jour = float.Parse(heures) * 3600 + float.Parse(minutes) * 60 + float.Parse(secondes);
+
+            if(ActivateTimeZone == true)
+            {
+                Jour = float.Parse(heures) * 3600 + float.Parse(minutes) * 60 + float.Parse(secondes);
+            }
+
             Weather();
 
         }

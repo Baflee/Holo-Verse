@@ -12,6 +12,11 @@ public class InterfaceController : MonoBehaviour
 
     public void Mesopotamien()
     {
-        SceneManager.LoadScene("Holo-Verse", LoadSceneMode.Single);
+        SceneManager.LoadScene("Mesopotamien", LoadSceneMode.Single);
+    }
+
+    public void Warrior()
+    {
+        SceneManager.LoadScene("Warrior", LoadSceneMode.Single);
     }
 }

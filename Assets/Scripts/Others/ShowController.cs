@@ -42,7 +42,7 @@ public class ShowController : MonoBehaviour
 
     [SerializeField]
     public GameObject menu;
-    private GameObject clonemenu = null;
+    public GameObject clonemenu = null;
     public Vector3 menuposition;
     public Vector3 menuscale;
 
@@ -53,7 +53,6 @@ public class ShowController : MonoBehaviour
     public Vector2ScaleScript Vector2ScaleScript;
 
     [SerializeField]
-    public Camera PointerCamera;
     public bool showController = false;
     public bool showIcons = false;
     public float MinShowMenu;
@@ -66,11 +65,13 @@ public class ShowController : MonoBehaviour
         cloneiconmovement = GameObject.Instantiate(iconmovement);
         cloneiconfly = GameObject.Instantiate(iconfly);
         clonemenu = GameObject.Instantiate(menu);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (loaded == true && iconslotright && iconslotleft)
         {
             cloneiconmovement.transform.parent = iconslotright.transform;
@@ -97,7 +98,6 @@ public class ShowController : MonoBehaviour
             clonemenu.transform.localPosition = menuposition;
             clonemenu.transform.localRotation = Quaternion.Euler(-90, 180, 0);
             clonemenu.transform.localScale = menuscale;
-            clonemenu.GetComponent<Canvas>().worldCamera = PointerCamera;
             loaded = false;
         }
 

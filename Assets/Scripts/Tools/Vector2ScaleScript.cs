@@ -94,6 +94,31 @@ public class Vector2ScaleScript : MonoBehaviour
         else
             ScaleUp = false;
     }
+
+    void ScaleSecDown()
+    {
+        if (PlayerScale >= MinScale)
+        {
+            PlayerScale += 0.5f;
+        }
+        else if(PlayerScale < MinScale)
+        {
+            PlayerScale = MinScale;
+        }
+    }
+
+    void ScaleSecUp()
+    {
+        if (PlayerScale >= MaxScale)
+        {
+            PlayerScale -= 0.5f;
+        }
+        else if (PlayerScale > MaxScale)
+        {
+            PlayerScale = MaxScale;
+        }
+    }
+
 }
 
 

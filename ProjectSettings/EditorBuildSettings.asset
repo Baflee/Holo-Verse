@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Holo-Verse.unity
+    path: Assets/Scenes/Mesopotamien.unity
     guid: 58739b1fba2e55e4d9f07fa5cb574158
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 8c6daecb523156d4eb4754365f8ba158,

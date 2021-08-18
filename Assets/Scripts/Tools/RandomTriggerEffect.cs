@@ -14,6 +14,14 @@ public class RandomTriggerEffect : MonoBehaviour
     public AudioClip fiveAudio;
 
     // Update is called once per frame
+    private void Update()
+    {
+        if(kitAudio == null)
+        {
+            kitAudio = GameObject.Find("Player").GetComponent<AudioSource>();
+        }
+    }
+
     void ChangeEffect(int effect)
     {
         switch (effect)

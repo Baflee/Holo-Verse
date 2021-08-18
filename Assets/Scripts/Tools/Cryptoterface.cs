@@ -13,6 +13,73 @@ public class Cryptoterface : MonoBehaviour
     public GameObject UnHideButton;
     // Start is called before the first frame update
 
+    public void Start()
+    {
+        if(CameraPath == null)
+        {
+            CameraPath = GameObject.Find("PathCamera");
+            CameraPath.SetActive(false);
+        }
+
+        if (CameraHeadset == null)
+        {
+            CameraHeadset = GameObject.Find("BackgroundCamera");
+        }
+
+        if (TogglePath == null)
+        {
+            TogglePath = GameObject.Find("PToggle").GetComponent<Toggle>();
+        }
+
+        if (ToggleHeadset == null)
+        {
+            ToggleHeadset = GameObject.Find("HToggle").GetComponent<Toggle>();
+        }
+
+        if (InterfaceCamera == null)
+        {
+            InterfaceCamera = GameObject.Find("Interface Camera");
+        }
+
+        if (UnHideButton == null)
+        {
+            UnHideButton = GameObject.Find("UnHideButton");
+        }
+    }
+
+    public void Update()
+    {
+        if (CameraPath == null)
+        {
+            CameraPath = GameObject.Find("PathCamera");
+            CameraPath.SetActive(false);
+        }
+
+        if (CameraHeadset == null)
+        {
+            CameraHeadset = GameObject.Find("BackgroundCamera");
+        }
+
+        if (TogglePath == null)
+        {
+            TogglePath = GameObject.Find("PToggle").GetComponent<Toggle>();
+        }
+
+        if (ToggleHeadset == null)
+        {
+            ToggleHeadset = GameObject.Find("HToggle").GetComponent<Toggle>();
+        }
+
+        if (InterfaceCamera == null)
+        {
+            InterfaceCamera = GameObject.Find("Interface Camera");
+        }
+
+        if (UnHideButton == null)
+        {
+            UnHideButton = GameObject.Find("UnHideButton");
+        }
+    }
 
     public void SetCameraPath (bool isCameraPath)
     {

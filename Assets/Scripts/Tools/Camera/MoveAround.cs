@@ -24,6 +24,7 @@ public class MoveAround : MonoBehaviour
     public float HorizDistMax = 200;
     public float VertDistMin = 150;
     public float VertDistMax = 200;
+    public float YPosition;
 
     int cleancycle = 0;
 
@@ -46,7 +47,7 @@ public class MoveAround : MonoBehaviour
     {
         Random.InitState(System.DateTime.Now.Millisecond);
         int inverse = Random.Range(0, invVal) == 0 ? 1 : -1;
-        origin = new Vector3(inverse * Random.Range(HorizDistMin, HorizDistMax), 0f, inverse * Random.Range(HorizDistMin, HorizDistMax));
+        origin = new Vector3(inverse * Random.Range(HorizDistMin, HorizDistMax), YPosition, inverse * Random.Range(HorizDistMin, HorizDistMax));
         var camera = GetComponent<Camera>();
         transform.position = origin;
         GeneratePath();
@@ -135,8 +136,7 @@ public class MoveAround : MonoBehaviour
         planeVector = inverse * Random.Range(horizDistMin, horizDistMax) * planeVector.normalized;
 
         inverse = Random.Range(0, 2) == 0 ? 1 : -1;
-        sphere.transform.position = new Vector3(planeVector.x,
-            inverse * Random.Range(vertDistMin, vertDistMax),
+        sphere.transform.position = new Vector3(planeVector.x, Random.Range(vertDistMin, vertDistMax),
             planeVector.z);
 
         sphere.transform.parent = pathParent.transform;
