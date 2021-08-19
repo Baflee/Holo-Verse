@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: MatteHull_16
   m_Shader: {fileID: 4800000, guid: 76dc2f7fe973ede4bbbedfc291269c84, type: 3}
   m_ShaderKeywords: _EMISSION
@@ -66,6 +67,7 @@ Material:
         m_Texture: {fileID: 2800000, guid: 640eb58bac1e8c349b8aef55f817627b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _BottomScale: 2
     - _Bulge: 2.25
@@ -99,3 +101,4 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 0}
+  m_BuildTextureStacks: []

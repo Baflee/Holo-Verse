@@ -15,22 +15,19 @@ namespace tiltbrush
         GradientColorKey[] PaletteJourCouleur;
         GradientAlphaKey[] PaletteJourTransparent;
         public bool ActivateTimeZone;
-        float H_Minuit = 86400f;
-        float H_Soir = 64800f;
-        float H_Midi = 43200f;
-        float H_Mat = 28800f;
-        float H_Matin = 0f;
-        float H_MilieuMatin;
-        float H_MilieuApresMidi;
+        [SerializeField]  private float H_Minuit = 86400f;
+        [SerializeField]  private float H_Soir = 64800f;
+        [SerializeField]  private float H_Midi = 43200f;
+        [SerializeField]  private float H_Mat = 28800f;
+        [SerializeField]  private float H_Matin = 0f;
+        [SerializeField]  private float H_MilieuMatin;
+        [SerializeField]  private float H_MilieuApresMidi;
         public Color Matinee;
         public Color Midi;
         public Color Soiree;
-        string timelog;
-        float test;
 
         void Start()
         {
-            RenderSettings.fogDensity = 1;
             float colorvalue = Random.Range(0f, 1f);
             Matinee = Color.HSVToRGB(colorvalue, 1f, 0.25f);
             Midi = Color.HSVToRGB(colorvalue + 0.072f, 0.6f, 1f);
@@ -70,6 +67,15 @@ namespace tiltbrush
             if(ActivateTimeZone == true)
             {
                 Jour = float.Parse(heures) * 3600 + float.Parse(minutes) * 60 + float.Parse(secondes);
+            }
+
+            if (Jour >= H_Matin && Jour <= H_MilieuMatin)
+            {
+                RenderSettings.fogDensity = (1f - (Jour / H_MilieuMatin)) / 33f;
+            }
+            else if (Jour >= H_MilieuApresMidi && Jour <= H_Minuit)
+            {
+                RenderSettings.fogDensity = ((Jour - H_MilieuApresMidi) / (H_Minuit - H_MilieuApresMidi)) / 33f;
             }
 
             Weather();

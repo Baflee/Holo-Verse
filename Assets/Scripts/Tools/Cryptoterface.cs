@@ -5,25 +5,33 @@ using UnityEngine.UI;
 
 public class Cryptoterface : MonoBehaviour
 {
+    public GameObject CameraHolder;
     public GameObject CameraPath;
     public GameObject CameraHeadset;
     public Toggle TogglePath;
     public Toggle ToggleHeadset;
     public GameObject InterfaceCamera;
     public GameObject UnHideButton;
+    public Slider SpeedAuto;
     // Start is called before the first frame update
 
     public void Start()
     {
-        if(CameraPath == null)
+        TogglePath.isOn = false;
+        if (CameraHolder == null)
         {
-            CameraPath = GameObject.Find("PathCamera");
+            CameraHolder = GameObject.Find("/Path/CameraHolder");
+        }
+
+        if (CameraPath == null)
+        {
+            CameraPath = GameObject.Find("/Path/CameraHolder/PathCamera");
             CameraPath.SetActive(false);
         }
 
         if (CameraHeadset == null)
         {
-            CameraHeadset = GameObject.Find("BackgroundCamera");
+            CameraHeadset = GameObject.Find("/Player/SteamVRObjects/VRCamera/BackgroundCamera");
         }
 
         if (TogglePath == null)
@@ -46,14 +54,9 @@ public class Cryptoterface : MonoBehaviour
             UnHideButton = GameObject.Find("UnHideButton");
         }
     }
-
     public void Update()
     {
-        if (CameraPath == null)
-        {
-            CameraPath = GameObject.Find("PathCamera");
-            CameraPath.SetActive(false);
-        }
+        SetAutoCameraSpeed(SpeedAuto.value);
 
         if (CameraHeadset == null)
         {
@@ -104,7 +107,6 @@ public class Cryptoterface : MonoBehaviour
         else
         {
             CameraHeadset.SetActive(isCameraHeadset);
-            UnHideButton.SetActive(false);
         }
         
     }
@@ -119,6 +121,11 @@ public class Cryptoterface : MonoBehaviour
     {
         InterfaceCamera.SetActive(true);
         UnHideButton.SetActive(false);
+    }
+
+    public void SetAutoCameraSpeed(float Speed)
+    {
+        CameraHolder.GetComponent<MoveAround>().speed = Speed;
     }
 
 }
