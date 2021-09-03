@@ -104,13 +104,13 @@ MonoBehaviour:
     value: 100
   lift:
     overrideState: 1
-    value: {x: 1, y: 0.8845811, z: 0.72308195, w: -0.12711857}
+    value: {x: 1, y: 0.8845811, z: 0.72308195, w: -0.08941829}
   gamma:
     overrideState: 1
-    value: {x: 1, y: 1, z: 1, w: -0.21186443}
+    value: {x: 1, y: 1, z: 1, w: -0.11761371}
   gain:
     overrideState: 1
-    value: {x: 1, y: 1, z: 1, w: -0.14830504}
+    value: {x: 0.9558684, y: 0.9752202, z: 1, w: -0.14830504}
   masterCurve:
     overrideState: 0
     value:
@@ -1329,10 +1329,10 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 9.16
+    value: 0.3
   threshold:
     overrideState: 1
-    value: 0.82
+    value: 2.47
   softKnee:
     overrideState: 0
     value: 0.5
@@ -1340,8 +1340,8 @@ MonoBehaviour:
     overrideState: 0
     value: 65472
   diffusion:
-    overrideState: 0
-    value: 7
+    overrideState: 1
+    value: 6.51
   anamorphicRatio:
     overrideState: 0
     value: 0
